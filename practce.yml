@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata: 
-  name: java123
+  name: java12
 spec: 
  containers: 
    - name: nginx
@@ -9,7 +9,7 @@ spec:
      resources: 
        requests: 
          memory: "128Mi"
-         cpu: "100m"
+         cpu: "100m" 
        limits: 
-         memory: "210Mi"
-         cpu: "120m"      
+         memory: "150Mi" 
+         cpu: "110m"    
