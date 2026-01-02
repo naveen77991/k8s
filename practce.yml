@@ -8,9 +8,9 @@ spec:
      image: nginx 
      resources:  
        requests: 
-         memory: "128mi"
+         memory: "128Mi"
          cpu: "100m" 
        limits: 
-         memory: "210mi" 
+         memory: "210Mi" 
          cpu: "124m" 
          
