@@ -5,7 +5,7 @@ metadata:
  labels: 
   color: black
 spec: 
-containers:
+ containers:
   - name: nginx
     image: nginx  
 --- 
