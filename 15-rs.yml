@@ -3,7 +3,7 @@ kind: ReplicaSet
 metadata: 
  name: java12
 spec: 
-  replicas: 2
+  replicas: 3
   selector: 
     matchLabels: 
       color: red 
@@ -16,4 +16,3 @@ spec:
       containers: 
         - name: java
           image: nginx 
-                   
