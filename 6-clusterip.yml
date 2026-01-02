@@ -11,5 +11,16 @@ spec:
   ports:
    - port: 80
      targetPort: 80
-  
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: java1
+  labels:
+    color: red
+spec:
+ containers: 
+   - name: java
+     image: nginx 
+---        
            
