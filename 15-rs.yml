@@ -11,7 +11,7 @@ spec:
     metadata: 
       name: javapod
       labels: 
-        color: red 
+        color: green
     spec: 
       containers: 
         - name: java
