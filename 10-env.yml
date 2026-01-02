@@ -8,4 +8,4 @@ spec:
     image: nginx
     env: 
      - name: naveen 
-       course:  devops   
+       value:  devops   
