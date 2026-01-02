@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: hello2
+spec: 
+ containers: 
+  - name: java2
+    image: nginx
+    env: 
+     - name: naveen 
+       course:  devops   
