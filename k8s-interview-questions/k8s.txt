@@ -1,0 +1,68 @@
+pv 
+
+“In Kubernetes, pods are temporary, but application data should not be temporary. So Kubernetes uses PersistentVolumes to handle storage separately from pods.”
+
+Then continue:
+
+“A PersistentVolume is Kubernetes’ way of describing real storage that already exists, like an AWS EBS volume or a network disk. It is not created by the application. It is created at the infrastructure level so Kubernetes knows that storage is available.”
+
+Then explain the role:
+
+“The PV does not belong to any pod or application. It just sits in the cluster as available storage. When an application later asks for storage using a PVC, Kubernetes matches that request with a suitable PV.”
+
+
+PERSISTANT VLOUME CLAMIS :(PVC)
+
+“A PersistentVolumeClaim, or PVC, is how an application asks Kubernetes for storage. The application does not say where the storage comes from or which disk to use. It only tells how much storage it needs and how it wants to use it.”
+
+Then explain the separation clearly:
+
+“The PVC does not create storage by itself. It is just a request. Kubernetes looks at the available PersistentVolumes and finds one that matches this request.”
+
+Then add the most important clarity point:
+
+“The pod never talks to the actual disk. The pod only uses the PVC. Kubernetes handles everything else in the background.”
+
+End like this:
+
+“So in simple terms, a PVC is an application-side request for storage, while Kubernetes takes care of mapping that request to real storage.”
+
+EBS STATIC PROVSION:
+
+first u have to create a volume 
+
+u need to attach ebs csi driver policy
+
+make sure ec2 is in 1a end ebs also in 1a 
+
+create pvc,pv 
+
+
+
+4️⃣ What is the relationship between PV and PVC?
+
+ Answer: PVC requests storage and PV provides storage. Kubernetes binds them only if size and access modes match. If they don’t match, the PVC stays in Pending state.
+
+5️⃣ Does a Pod directly use a PV or a disk? 
+
+Answer: No. A pod only uses a PVC. It does not know about the PV or the actual disk. Kubernetes manages everything internally.
+
+6️⃣ What happens if PVC requests more storage than PV capacity? 
+
+Answer: Kubernetes will not bind them. The PVC stays in Pending state and the pod will not start. 
+
+7️⃣ What happens if access modes of PV and PVC don’t match? 
+
+Answer: Kubernetes does not bind them. The PVC stays in Pending state to avoid unsafe disk usage and data corruption.
+
+8️⃣ Can we change accessModes of a PVC after creation? 
+
+Answer: No. Access modes are immutable. To change them, the PVC must be deleted and recreated. 
+
+9️⃣ What is the difference between static and dynamic provisioning? 
+
+Answer: In static provisioning, the disk and PV are created manually before the PVC. In dynamic provisioning, Kubernetes creates the disk and PV automatically when the PVC is created.
+
+10) PVC is Pending. What could be the reasons? 
+
+Answer: No matching PV available, size mismatch, access mode mismatch, wrong StorageClass, or zone mismatch.
